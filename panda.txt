@@ -1,0 +1,24 @@
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import classification_report
+
+df = pd.read_csv('iris_sub.csv')
+
+df.drop(["remove_column"], inplace=True)
+
+y = df['class']
+
+y.to_csv('y.csv', index=False)
+x.to_csv('y.csv', index=False)
+
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30)
+knn = KNeighborsClassifier(n_neighbors=5)
+knn.fit(X_train, y_train)
+print("Response for test dataset:")
+y_pred = knn.predict(X_test)
+X_pred = Knn.predict(y_train)
+result = classification_report(y_test, y_pred)
+result = classification_report(X_test, X_pred)
+print(result)
